@@ -3,13 +3,15 @@
 /*
 Plugin Name: Social Tinguar
 Plugin URI: https://tinguar.com/
-Description: Social media buttons.
+Description: Con este plugin podras poner botones para contecto facil, primera version con WhatsApp
 Author: Alberto Guaman
 Author URI: https://tinguar.com/
 Version: 0.0.1
 */
 
 
+require_once(plugin_dir_path(__FILE__) . 'models/countries.php');
+require_once(plugin_dir_path(__FILE__) . 'menu_functions.php');
 
 function enqueue_st_button_scripts() {
     wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
@@ -24,15 +26,13 @@ function display_st_button() {
     if ($is_active !== '1') {
         return; 
     }
-
-    $phone_number = get_option('st_button_phone_number', 'your-default-phonenumber');
+    $selected_country = get_option('st_button_country', '593');
+    $phone_number = get_option('st_button_phone_number', '998602204');
     $position = get_option('st_button_position', 'bottom-right');
     $button_text = get_option('st_button_text', 'WhatsApp');
 
     $position_class = esc_attr($position); 
-
-    // echo '<div id="whatsapp-sticky-button" class="whatsapp-sticky-button ' . $position_class . '"><a href="https://api.whatsapp.com/send/?phone=' . esc_attr($phone_number) . '&text=' . urlencode($button_text) . '" target="_blank"><img src="' . plugin_dir_url(__FILE__) . 'images/whatsapp-icon.png" alt="WhatsApp"></a></div>';
-    echo '<div id="whatsapp-sticky-button" class="floating_btn ' . $position_class . '"> <a href="https://api.whatsapp.com/send/?phone=' . esc_attr($phone_number) . '&text=' . urlencode($button_text) . '" target="_blank"> <div class="contact_icon">  <i class="fa fa-whatsapp my-float"></i> </div> </a> </div>';
+    echo '<div id="whatsapp-sticky-button" class="floating_btn ' . $position_class . '"> <a href="https://api.whatsapp.com/send/?phone=' . esc_attr($selected_country) . '' . esc_attr($phone_number) . '&text=' . urlencode($button_text) . '" target="_blank"> <div class="contact_icon">  <i class="fa fa-whatsapp my-float"></i> </div> </a> </div>';
 }
 
 
@@ -69,7 +69,6 @@ function st_settings_page() {
      
         <div style="margin-top: 30px;  20px; border-top: 1px solid #000000; text-align: center;">
             <p id="whatsapp-sticky-button-style" class="footer_section_c" style="color:#000000;">Sugerencias o colaboracion contactar a: <a style="text-decoration: none;" href="https://tinguar.com/index.php/redes-sociales/" target="_blank">Tinguar</a></p>
-            <!-- <a href="https://tinguar.com" target="_blank"><img src="<?php echo plugin_dir_url(__FILE__) . 'images/banner.png'; ?>" alt="Tinguar Logo" style="max-width: 100%; height: auto;"></a> -->
         </div>
     </div>
     <?php
@@ -78,6 +77,7 @@ function st_settings_page() {
 
 function st_button_register_settings() {
     register_setting('st_button_settings', 'st_button_active');
+    register_setting('st_button_settings', 'st_button_country');
     register_setting('st_button_settings', 'st_button_phone_number');
     register_setting('st_button_settings', 'st_button_text');
     register_setting('st_button_settings', 'st_button_position');
@@ -85,7 +85,8 @@ function st_button_register_settings() {
     add_settings_section('st_button_main', '', 'st_button_section_text', 'st_button_settings');
 
     add_settings_field('st_button_active', 'Activar Boton', 'st_button_active_input', 'st_button_settings', 'st_button_main');
-    add_settings_field('st_button_phone_number', 'Número de teléfono de WhatsApp', 'st_button_phone_number_input', 'st_button_settings', 'st_button_main');
+    add_settings_field('st_button_country','Selecione Pais','st_button_country_input','st_button_settings','st_button_main');
+    add_settings_field('st_button_phone_number','Número de teléfono de WhatsApp', 'st_button_phone_number_input', 'st_button_settings', 'st_button_main');
     add_settings_field('st_button_text', 'Texto Personalizado (OPCIONAL)', 'st_button_text_input', 'st_button_settings', 'st_button_main');
     add_settings_field('st_button_position', 'Posición del botón', 'st_button_position_input', 'st_button_settings', 'st_button_main');
     
@@ -101,16 +102,29 @@ function st_button_active_input() {
     echo '<label><input type="checkbox" name="st_button_active" value="1" ' . $checked . '> Para visualizacion en su pagina</label>';
 }
 
+function st_button_country_input(){
+    global $country_list; 
+    $selected_country = get_option('st_button_country', '593'); 
+    $select_options = '';
+    foreach ($country_list as $code => $name) {
+        $selected = selected($selected_country, $code, false); 
+        $select_options .= '<option value="' . esc_attr($code) . '" ' . $selected . '>' . esc_html($name) . '</option>';
+    }
+
+    echo '<select id="country" name="st_button_country">' . $select_options . '</select>';
+}
+
+
 function st_button_phone_number_input() {
-    $phone_number = get_option('st_button_phone_number', 'your-default-phonenumber');
+    $phone_number = get_option('st_button_phone_number', '998602204');
     echo '<input type="text" name="st_button_phone_number" value="' . esc_attr($phone_number) . '" />';
 }
 
 function st_button_position_input() {
     $position = get_option('st_button_position', 'bottom-right');
     $positions = array(
-        'bottom-left' => 'Abajo a la derecha',
-        'bottom-right' => 'Abajo a la izquierda',
+        'bottom-left' => 'Abajo a la izquierda',
+        'bottom-right' => 'Abajo a la derecha',
     );
 
     echo '<select name="st_button_position">';
@@ -130,13 +144,3 @@ function st_button_text_input() {
 }
 
 add_action('admin_menu', 'st_menu');
-
-function st_menu() {
-    add_menu_page(
-        'Tinguar WhatsApp', 
-        'Tinguar WhatsApp', 
-        'manage_options', 
-        'st-button-settings',
-        'st_settings_page',);
-    add_action('admin_init', 'st_button_register_settings');
-}
