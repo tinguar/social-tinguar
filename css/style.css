@@ -1,0 +1,68 @@
+.bottom-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.bottom-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.floating_btn a {
+    text-decoration: none;
+}
+
+.floating_btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.contact_icon a {
+    text-decoration: none;
+}
+
+.contact_icon {
+    background-color: #25d366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translatey(0px);
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 0 0 #42db87;
+    -webkit-animation: pulsing 1.90s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulsing 1.90s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulsing 1.90s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulsing 1.90s infinite cubic-bezier(0.66, 0, 0, 1);
+    font-weight: normal;
+    font-family: sans-serif;
+    text-decoration: none !important;
+    transition: all 1000ms ease-in-out;
+}
+
+@keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+
+.footer_section_c {
+    color: black;
+    font-size: 15px;
+}
