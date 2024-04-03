@@ -7,7 +7,7 @@
  * Version:           1.0.0
  * Requires at least: 4.2
  * Requires PHP:      7.2
- * Author:            Alberto Guaman
+ * Author:            Tinguar.com
  * Author URI:        https://github.com/tinguar
  * License:           GPL v3
  * License URI:       https://github.com/tinguar/social-tinguar/blob/main/LICENSE
