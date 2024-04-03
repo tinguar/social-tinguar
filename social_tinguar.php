@@ -3,7 +3,7 @@
 /*
  * Plugin Name:       Social Tinguar
  * Plugin URI:        https://blog.tinguar.com/
- * Description:       Con este plugin podras poner botones para contacto facil, primera version con WhatsApp
+ * Description:       Con este plugin podras poner botones para contacto Fácil, primera version con WhatsApp
  * Version:           1.0.0
  * Requires at least: 4.2
  * Requires PHP:      7.2
