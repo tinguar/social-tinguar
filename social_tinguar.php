@@ -8,7 +8,19 @@ Author: Alberto Guaman
 Author URI: https://tinguar.com/
 Version: 1.0.0
 */
-
+/*
+ * Plugin Name:       Social Tinguar
+ * Plugin URI:        https://blog.tinguar.com/
+ * Description:       Con este plugin podras poner botones para contacto facil, primera version con WhatsApp
+ * Version:           1.0.0
+ * Requires at least: 4.2
+ * Requires PHP:      7.2
+ * Author:            Alberto Guaman
+ * Author URI:        https://github.com/tinguar
+ * License:           GPL v3
+ * License URI:       https://github.com/tinguar/social-tinguar/blob/main/LICENSE
+ * Update URI:        https://blog.tinguar.com/
+ */
 
 require_once(plugin_dir_path(__FILE__) . 'models/countries.php');
 require_once(plugin_dir_path(__FILE__) . 'menu_functions.php');
