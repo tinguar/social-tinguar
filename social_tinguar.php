@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: Social Tinguar
-Plugin URI: https://tinguar.com/
-Description: Con este plugin podras poner botones para contecto facil, primera version con WhatsApp
+Plugin URI: https://blog.tinguar.com/
+Description: Con este plugin podras poner botones para contacto facil, primera version con WhatsApp
 Author: Alberto Guaman
 Author URI: https://tinguar.com/
-Version: 0.0.1
+Version: 1.0.0
 */
 
 
