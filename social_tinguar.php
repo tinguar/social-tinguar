@@ -1,14 +1,6 @@
 <?php
 
 /*
-Plugin Name: Social Tinguar
-Plugin URI: https://blog.tinguar.com/
-Description: Con este plugin podras poner botones para contacto facil, primera version con WhatsApp
-Author: Alberto Guaman
-Author URI: https://tinguar.com/
-Version: 1.0.0
-*/
-/*
  * Plugin Name:       Social Tinguar
  * Plugin URI:        https://blog.tinguar.com/
  * Description:       Con este plugin podras poner botones para contacto facil, primera version con WhatsApp
