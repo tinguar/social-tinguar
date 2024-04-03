@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: Alberto Guaman
 Donate link: https://tinguar.com/index.php/redes-sociales/
-Tags: wordpress
+Tags: 
 Requires at least: 4.7
 Tested up to: 5.4
 Stable tag: 4.3
