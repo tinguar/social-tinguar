@@ -4,7 +4,7 @@
  * Plugin Name:       Social Tinguar
  * Plugin URI:        https://blog.tinguar.com/
  * Description:       Con este plugin podras poner botones para contacto Fácil, primera version con WhatsApp
- * Version:           1.0.1
+ * Version:           1.0.0
  * Requires at least: 4.2
  * Requires PHP:      7.2
  * Author:            Alberto Guaman
@@ -35,7 +35,7 @@ function display_st_button() {
     $button_text = get_option('st_button_text', 'WhatsApp');
 
     $position_class = esc_attr($position); 
-    echo '<div id="whatsapp-sticky-button" class="floating_btn ' . $position_class . '"> <a href="https://api.whatsapp.com/send/?phone=' . esc_attr($selected_country) . '' . esc_attr($phone_number) . '&text=' . urlencode($button_text) . '" target="_blank"> <div class="contact_icon">  <i class="fa fa-whatsapp my-float"></i> </div> </a> </div>';
+    echo '<div id="whatsapp-sticky-button" class="floating_btn ' . $position_class . '"> <a href="https://api.whatsapp.com/send/?phone=' . esc_attr($selected_country) . '' . esc_attr($phone_number) . '&text=' . urlencode($button_text) . '" target="_blank"> <div class="contact_icon">  <img style="width:40px;" src="' . plugin_dir_url(__FILE__) . 'images/whatsapp-icon.png" alt="WhatsApp">    </div> </a> </div>';
 }
 
 
