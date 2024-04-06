@@ -2,13 +2,13 @@
 
 /*
  * Plugin Name:       Social Tinguar
- * Plugin URI:        https://blog.tinguar.com/
+ * Plugin URI:        https://tinguar.com/index.php/2024/04/03/plugin-wordpres-whastapp-gratis/
  * Description:       Con este plugin podras poner botones para contacto Fácil, primera version con WhatsApp
  * Version:           1.0.0
  * Requires at least: 4.2
  * Requires PHP:      7.2
  * Author:            Tinguar.com
- * Author URI:        https://github.com/tinguar
+ * Author URI:        https://tinguar.com/
  * License:           GPL v3
  * License URI:       https://github.com/tinguar/social-tinguar/blob/main/LICENSE
  */
